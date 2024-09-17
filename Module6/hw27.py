@@ -28,7 +28,7 @@ class Vehicle:
 
     def set_color(self, new_color: str):
         if new_color.lower() in Vehicle.__COLOR_VARIANTS:
-            self.__color == new_color.lower()
+            self.__color = new_color.lower()
             self.__is_uppercase = True
         else:
             print(f'Нельзя сменить цвет на {new_color}')

@@ -1,0 +1,42 @@
+{% extends 'main.html'%}
+
+{% block crud_container %}
+
+<section class="container-fluid">
+    <form method="post" action="/">
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" name="username" class="form-control" placeholder="Enter your name">
+                <input type="number" name="age" class="form-control" placeholder="Enter your age" min="18" max="120">
+                <button class="brn btn-primary" type="submit">
+                    Add
+                </button>
+            </div>
+        </div>
+    </form>
+</section>
+    {% if user %}
+        <article class="card container fluid">
+        <br>
+            <h2> ID: {{user.id}}</h2>
+            <p>
+                <strong>Username:</strong> {{user.username}} <br>
+                <strong>Age:</strong> {{user.age}}
+            </p>
+        </article>
+    {% else %}
+            <section class="container-fluid">
+                <h2 align="center"> Users </h2>
+                <br>
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        {% for user in users_list %}
+                        <li class="list-group-item">
+                            <a href="/user/{{user.id}}"> {{user.id}} - {{user.username}} </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+    {% endif %}
+{% endblock %}
